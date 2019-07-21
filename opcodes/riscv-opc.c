@@ -753,19 +753,38 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vsgt.i",      "V",   "Vd,Vs,Vj", MATCH_VSGT_I, MASK_VSGT_I, match_opcode, 0 },
 {"vsge.i",      "V",   "Vd,Vs,Vj", MATCH_VSGE_I, MASK_VSGE_I, match_opcode, 0 },
 
-{"vmv.v",       "V",   "Vd,Vs,Vt", MATCH_VMV_V, MASK_VMV_V, match_opcode, 0 },
 {"vclip.x",     "V",   "Vd,Vs,t",  MATCH_VCLIP_X, MASK_VCLIP_X, match_opcode, 0 },
 {"vclip.i",     "V",   "Vd,Vs,Vj",  MATCH_VCLIP_I, MASK_VCLIP_I, match_opcode, 0 },
 
+{"vlb",       "V",   "Vd,s", MATCH_VLB, MASK_VLB | MASK_RS2, match_opcode, 0 },
 {"vlh",       "V",   "Vd,s", MATCH_VLH, MASK_VLH | MASK_RS2, match_opcode, 0 },
+{"vlw",       "V",   "Vd,s", MATCH_VLW, MASK_VLW | MASK_RS2, match_opcode, 0 },
+
+{"vlsb",      "V",   "Vd,s,t", MATCH_VLSB, MASK_VLSB, match_opcode, 0 },
 {"vlsh",      "V",   "Vd,s,t", MATCH_VLSH, MASK_VLSH, match_opcode, 0 },
+{"vlsw",      "V",   "Vd,s,t", MATCH_VLSW, MASK_VLSW, match_opcode, 0 },
+
+{"vlxb",      "V",   "Vd,s,Vt", MATCH_VLXB, MASK_VLXB, match_opcode, 0 },
 {"vlxh",      "V",   "Vd,s,Vt", MATCH_VLXH, MASK_VLXH, match_opcode, 0 },
-
+{"vlxw",      "V",   "Vd,s,Vt", MATCH_VLXW, MASK_VLXW, match_opcode, 0 },
+  
+{"vsb",       "V",   "t,Vs", MATCH_VSB, MASK_VSB | MASK_RD, match_opcode, 0 },
 {"vsh",       "V",   "t,Vs", MATCH_VSH, MASK_VSH | MASK_RD, match_opcode, 0 },
-{"vssh",      "V",   "d,Vs,t", MATCH_VSSH, MASK_VSSH, match_opcode, 0 },
-{"vsxh",      "V",   "d,Vs,Vt", MATCH_VSXH, MASK_VSXH, match_opcode, 0 },
+{"vsw",       "V",   "t,Vs", MATCH_VSW, MASK_VSW | MASK_RD, match_opcode, 0 },
 
-{"vsetvl",    "V",   "d,s", MATCH_VSETVL, MASK_VSETVL | MASK_IMM, match_opcode, 0},
+{"vssb",      "V",   "d,Vs,t", MATCH_VSSB, MASK_VSSB, match_opcode, 0 },
+{"vssh",      "V",   "d,Vs,t", MATCH_VSSH, MASK_VSSH, match_opcode, 0 },
+{"vssw",      "V",   "d,Vs,t", MATCH_VSSW, MASK_VSSW, match_opcode, 0 },
+
+{"vsxb",      "V",   "d,Vs,Vt", MATCH_VSXB, MASK_VSXB, match_opcode, 0 },
+{"vsxh",      "V",   "d,Vs,Vt", MATCH_VSXH, MASK_VSXH, match_opcode, 0 },
+{"vsxw",      "V",   "d,Vs,Vt", MATCH_VSXW, MASK_VSXW, match_opcode, 0 },
+
+{"vsetvlb",    "V",   "d,s", MATCH_VSETVLB, MASK_VSETVLB, match_opcode, 0},
+{"vsetvlh",    "V",   "d,s", MATCH_VSETVLH, MASK_VSETVLH, match_opcode, 0},
+{"vsetvl",     "V",   "d,s", MATCH_VSETVLH, MASK_VSETVLH, match_opcode, 0},
+{"vsetvlw",    "V",   "d,s", MATCH_VSETVLW, MASK_VSETVLW, match_opcode, 0},
+
 {"vfence",    "V",   "", MATCH_VFENCE, MASK_VFENCE, match_opcode, 0},
 
 /* Terminate the list.  */
