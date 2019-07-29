@@ -490,6 +490,9 @@ static bfd_boolean validate_riscv_insn(const struct riscv_opcode *opc) {
 				case 'j':
 					USE_BITS(OP_MASK_RS2, OP_SH_RS2);
 					break;
+				case '3':
+					USE_BITS(OP_MASK_RD, OP_SH_RD);
+					break;
 				default:
 				as_bad(_("internal: bad RISC-V opcode (unknown operand type `C%c'): %s "
 					 "%s"), c, opc->name, opc->args);
@@ -1297,6 +1300,16 @@ static const char *riscv_ip(char *str, struct riscv_cl_insn *ip,
 							INSERT_BITS((*ip).insn_opcode, (imm & 0x1f), OP_MASK_RS2, OP_SH_RS2);
 						}
 						continue;
+					case '3':
+						{
+							if (!reg_lookup(&s, RCLASS_VECR, &regno)) break;
+							INSERT_OPERAND(RD, *ip, regno);
+							if(*s == '.' && *(s + 1) == 'k') {
+								s += 2;
+								OR_BITS((*ip).insn_opcode, 0x10, OP_MASK_RD, OP_SH_RD);
+							}
+							continue;
+						}
 					default:
 						as_bad(_("bad RVV field specifier 'V%c'\n"), *args);
 				}
