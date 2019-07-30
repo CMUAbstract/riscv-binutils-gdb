@@ -768,17 +768,17 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vlxh",      "V",   "Vd,s,Vt", MATCH_VLXH, MASK_VLXH, match_opcode, 0 },
 {"vlxw",      "V",   "Vd,s,Vt", MATCH_VLXW, MASK_VLXW, match_opcode, 0 },
   
-{"vsb",       "V",   "s,Vt", MATCH_VSB, MASK_VSB | MASK_RD, match_opcode, 0 },
-{"vsh",       "V",   "s,Vt", MATCH_VSH, MASK_VSH | MASK_RD, match_opcode, 0 },
-{"vsw",       "V",   "s,Vt", MATCH_VSW, MASK_VSW | MASK_RD, match_opcode, 0 },
+{"vsb",       "V",   "s,V3", MATCH_VSB, MASK_VSB | MASK_RS2, match_opcode, 0 },
+{"vsh",       "V",   "s,V3", MATCH_VSH, MASK_VSH | MASK_RS2, match_opcode, 0 },
+{"vsw",       "V",   "s,V3", MATCH_VSW, MASK_VSW | MASK_RS2, match_opcode, 0 },
 
 {"vssb",      "V",   "s,V3,t", MATCH_VSSB, MASK_VSSB, match_opcode, 0 },
 {"vssh",      "V",   "s,V3,t", MATCH_VSSH, MASK_VSSH, match_opcode, 0 },
 {"vssw",      "V",   "s,V3,t", MATCH_VSSW, MASK_VSSW, match_opcode, 0 },
 
-{"vsxb",      "V",   "s,Vt,V3", MATCH_VSXB, MASK_VSXB, match_opcode, 0 },
-{"vsxh",      "V",   "s,Vt,V3", MATCH_VSXH, MASK_VSXH, match_opcode, 0 },
-{"vsxw",      "V",   "s,Vt,V3", MATCH_VSXW, MASK_VSXW, match_opcode, 0 },
+{"vsxb",      "V",   "s,V3,Vt", MATCH_VSXB, MASK_VSXB, match_opcode, 0 },
+{"vsxh",      "V",   "s,V3,Vt", MATCH_VSXH, MASK_VSXH, match_opcode, 0 },
+{"vsxw",      "V",   "s,V3,Vt", MATCH_VSXW, MASK_VSXW, match_opcode, 0 },
 
 {"vsetvlb",    "V",   "d,s", MATCH_VSETVLB, MASK_VSETVLB, match_opcode, 0},
 {"vsetvlh",    "V",   "d,s", MATCH_VSETVLH, MASK_VSETVLH, match_opcode, 0},
