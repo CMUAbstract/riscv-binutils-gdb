@@ -723,9 +723,12 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vslt.v",      "V",   "Vd,Vs,Vt", MATCH_VSLT_V, MASK_VSLT_V, match_opcode, 0 },
 {"vsle.v",      "V",   "Vd,Vs,Vt", MATCH_VSLE_V, MASK_VSLE_V, match_opcode, 0 },
 {"vsgt.v",      "V",   "Vd,Vs,Vt", MATCH_VSGT_V, MASK_VSGT_V, match_opcode, 0 },
-{"vsge.v",      "V",   "Vd,Vs,Vt", MATCH_VSGE_V, MASK_VSGE_V, match_opcode, 0 },
+{"vsll.v",      "V",   "Vd,Vs,Vt", MATCH_VSLL_V, MASK_VSLL_V, match_opcode, 0 },
+{"vsrl.v",      "V",   "Vd,Vs,Vt", MATCH_VSRL_V, MASK_VSRL_V, match_opcode, 0 },
+
 {"vpermute.v",  "V",   "Vd,Vs,Vt", MATCH_VPERMUTE_V, MASK_VPERMUTE_V, match_opcode, 0 },
 {"vredsum.v",   "V",   "Vd,Vs", MATCH_VREDSUM_V, MASK_VREDSUM_V | MASK_RS2, match_opcode, 0 },
+{"vpresum.v",   "V",   "Vd,Vs", MATCH_VPRESUM_V, MASK_VPRESUM_V | MASK_RS2, match_opcode, 0 },
 
 {"vadd.x",      "V",   "Vd,Vs,t", MATCH_VADD_X, MASK_VADD_X, match_opcode, 0 },
 {"vsub.x",      "V",   "Vd,Vs,t", MATCH_VSUB_X, MASK_VSUB_X, match_opcode, 0 },
@@ -738,7 +741,8 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vslt.x",      "V",   "Vd,Vs,t", MATCH_VSLT_X, MASK_VSLT_X, match_opcode, 0 },
 {"vsle.x",      "V",   "Vd,Vs,t", MATCH_VSLE_X, MASK_VSLE_X, match_opcode, 0 },
 {"vsgt.x",      "V",   "Vd,Vs,t", MATCH_VSGT_X, MASK_VSGT_X, match_opcode, 0 },
-{"vsge.x",      "V",   "Vd,Vs,t", MATCH_VSGE_X, MASK_VSGE_X, match_opcode, 0 },
+{"vsll.x",      "V",   "Vd,Vs,t", MATCH_VSLL_X, MASK_VSLL_X, match_opcode, 0 },
+{"vsrl.x",      "V",   "Vd,Vs,t", MATCH_VSRL_X, MASK_VSRL_X, match_opcode, 0 },
 
 {"vadd.i",      "V",   "Vd,Vs,Vj", MATCH_VADD_I, MASK_VADD_I, match_opcode, 0 },
 {"vsub.i",      "V",   "Vd,Vs,Vj", MATCH_VSUB_I, MASK_VSUB_I, match_opcode, 0 },
@@ -751,7 +755,8 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vslt.i",      "V",   "Vd,Vs,Vj", MATCH_VSLT_I, MASK_VSLT_I, match_opcode, 0 },
 {"vsle.i",      "V",   "Vd,Vs,Vj", MATCH_VSLE_I, MASK_VSLE_I, match_opcode, 0 },
 {"vsgt.i",      "V",   "Vd,Vs,Vj", MATCH_VSGT_I, MASK_VSGT_I, match_opcode, 0 },
-{"vsge.i",      "V",   "Vd,Vs,Vj", MATCH_VSGE_I, MASK_VSGE_I, match_opcode, 0 },
+{"vsll.i",      "V",   "Vd,Vs,Vj", MATCH_VSLL_I, MASK_VSLL_I, match_opcode, 0 },
+{"vsrl.i",      "V",   "Vd,Vs,Vj", MATCH_VSRL_I, MASK_VSRL_I, match_opcode, 0 },
 
 {"vclip.x",     "V",   "Vd,Vs,t",  MATCH_VCLIP_X, MASK_VCLIP_X, match_opcode, 0 },
 {"vclip.i",     "V",   "Vd,Vs,Vj",  MATCH_VCLIP_I, MASK_VCLIP_I, match_opcode, 0 },
