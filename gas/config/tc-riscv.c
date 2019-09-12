@@ -1304,9 +1304,16 @@ static const char *riscv_ip(char *str, struct riscv_cl_insn *ip,
 						{
 							if (!reg_lookup(&s, RCLASS_VECR, &regno)) break;
 							INSERT_OPERAND(RD, *ip, regno);
-							if(*s == '.' && *(s + 1) == 'k') {
-								s += 2;
-								OR_BITS((*ip).insn_opcode, 0x10, OP_MASK_RD, OP_SH_RD);
+							if(*s == '.') {
+								for(int i = 0; i < 2; i++) {
+									if(*(s + 1) == 'k') {
+										s += 2;
+										OR_BITS((*ip).insn_opcode, 0x10, OP_MASK_RD, OP_SH_RD);
+									} else if(*(s + 1) == 'm') {
+										s += 2;
+										INSERT_BITS((*ip).insn_opcode, 0x1, OP_MASK_VM, OP_SH_VM);
+									}
+								}
 							}
 							continue;
 						}
