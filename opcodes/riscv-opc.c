@@ -731,6 +731,7 @@ const struct riscv_opcode riscv_opcodes[] =
 
 {"vredsum.v",   "V",   "Vd,Vs", MATCH_VREDSUM_V, MASK_VREDSUM_V | MASK_RS2, match_opcode, 0 },
 {"vredor.v",    "V",   "Vd,Vs", MATCH_VREDOR_V, MASK_VREDOR_V | MASK_RS2, match_opcode, 0 },
+{"vmask.i",     "V",   "Vj", MATCH_VMASK_I, MASK_VMASK_I | MASK_RS1 | MASK_RD, match_opcode, 0 },
 
 {"vadd.x",      "V",   "Vd,Vs,t", MATCH_VADD_X, MASK_VADD_X, match_opcode, 0 },
 {"vsub.x",      "V",   "Vd,Vs,t", MATCH_VSUB_X, MASK_VSUB_X, match_opcode, 0 },
