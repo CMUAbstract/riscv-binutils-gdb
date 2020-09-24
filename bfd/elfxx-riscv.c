@@ -868,7 +868,7 @@ static reloc_howto_type howto_table[] =
 	 "R_RISCV_VSTREAM",		/* name */
 	 FALSE,				/* partial_inplace */
 	 0,				/* src_mask */
-	 ENCODE_VSTREAM_TYPE_IMM (-1U),	/* dst_mask */
+	 ENCODE_ITYPE_IMM (-1U),	/* dst_mask */
 	 FALSE),			/* pcrel_offset */
 };
 

@@ -802,10 +802,8 @@ const struct riscv_opcode riscv_opcodes[] =
 
 {"vfence",    "V",   "", MATCH_VFENCE, MASK_VFENCE, match_opcode, 0},
 
-{"vtfr",      "V",   "s", MATCH_VTFR, MASK_VTFR | MASK_RS2, match_vtfr, INSN_ALIAS},
-{"vtfr",      "V",   "s,t", MATCH_VTFR, MASK_VTFR, match_opcode, 0},
-{"vtfr.r",    "V",   "s,Vq", MATCH_VTFR_R, MASK_VTFR_R | MASK_RS2, match_vtfr, INSN_ALIAS},
-{"vtfr.r",    "V",   "s,t,Vq", MATCH_VTFR_R, MASK_VTFR_R, match_opcode, 0},
+{"vtfr",      "V",   "s,Vf", MATCH_VTFR, MASK_VTFR | MASK_RS2, match_vtfr, INSN_ALIAS},
+{"vtfr",      "V",   "s,t,Vf", MATCH_VTFR, MASK_VTFR, match_opcode, 0},
 {"vcfg",      "V",   "s,Vq", MATCH_VCFG, MASK_VCFG, match_opcode, 0},
 
 /* Terminate the list.  */

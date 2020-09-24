@@ -1467,7 +1467,7 @@ perform_relocation (const reloc_howto_type *howto,
       break;
 
     case R_RISCV_VSTREAM:
-      value = ENCODE_VSTREAM_TYPE_IMM(value & 0xFFF);
+      value = ENCODE_ITYPE_IMM(value & 0xFFF);
       break;
 
     case R_RISCV_32:

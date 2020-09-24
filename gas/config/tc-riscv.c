@@ -493,9 +493,12 @@ static bfd_boolean validate_riscv_insn(const struct riscv_opcode *opc) {
 				case '3':
 					USE_BITS(OP_MASK_RD, OP_SH_RD);
 					break;
-				case 'q':
+				case 'f':
 					USE_BITS(OP_MASK_CUSTOM_IMM, OP_SH_CUSTOM_IMM);
 					USE_BITS(OP_MASK_RD, OP_SH_RD);
+					break;
+				case 'q':
+					USE_BITS(OP_MASK_CSR, OP_SH_CSR);
 					break;
 				default:
 				as_bad(_("internal: bad RISC-V opcode (unknown operand type `C%c'): %s "
@@ -1321,36 +1324,29 @@ static const char *riscv_ip(char *str, struct riscv_cl_insn *ip,
 							}
 							continue;
 						}
+					case 'f':
+						{
+							char *eptr;
+							char immc[5];
+							int i = 0;
+							while(*s != '\0') immc[i++] = *s++;
+							immc[i] = '\0';
+							unsigned int imm = strtoul(immc, &eptr, 0);
+							if(imm == 0) {
+								if(errno == EINVAL || errno == ERANGE) break;
+							}
+							if(imm > 0xfff) break;
+							INSERT_BITS((*ip).insn_opcode, ((imm >> 4) & 0x7f), 
+								OP_MASK_CUSTOM_IMM, OP_SH_CUSTOM_IMM);
+							INSERT_BITS((*ip).insn_opcode, (imm & 0xf), OP_MASK_RD, OP_SH_RD);
+						}
+						continue;
 					case 'q':
 						{
 							my_getExpression(imm_expr, s);
 							s = expr_end;
 							*imm_reloc = BFD_RELOC_RISCV_VSTREAM;
 							continue;
-							// int test = my_getSmallExpression(imm_expr, imm_reloc, s, p);
-							// my_getExpression(imm_expr, s);
-							// printf("TEST: %d", imm_expr->X_add_number);
-							// int reloc = parse_relocation(&s, imm_reloc, p);
-
-							// if (my_getSmallExpression(imm_expr, imm_reloc, s, p) ||
-							// 		imm_expr->X_op != O_constant || imm_expr->X_add_number == 0)
-							// 	break;
-							// printf("TEST: %d %x %s\n", test, reloc, s);
-							// ip->insn_opcode |= ENCODE_RVC_IMM(imm_expr->X_add_number);	
-							// char *eptr;
-							// char immc[8];
-							// int i = 0;
-							// while(*s != '\0') immc[i++] = *s++;
-							// immc[i] = '\0';
-							// unsigned int imm = strtoul(immc, &eptr, 0);
-							// if(imm == 0) {
-							// 	if(errno == EINVAL || errno == ERANGE) break;
-							// }
-							// if(imm > 4095) break;
-							// INSERT_BITS((*ip).insn_opcode, (imm & 0x1f), OP_MASK_RD, OP_SH_RD);	
-							// INSERT_BITS((*ip).insn_opcode, ((imm >> 5) & 0x7f), 
-							// 	OP_MASK_CUSTOM_IMM, OP_SH_CUSTOM_IMM);	
-							// continue;
 						}
 					default:
 						as_bad(_("bad RVV field specifier 'V%c'\n"), *args);
