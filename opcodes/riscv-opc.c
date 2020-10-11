@@ -144,13 +144,6 @@ match_c_addi4spn (const struct riscv_opcode *op, insn_t insn)
   return match_opcode (op, insn) && EXTRACT_RVC_ADDI4SPN_IMM (insn) != 0;
 }
 
-static int
-match_vtfr (const struct riscv_opcode *op, insn_t insn)
-{
-  int rs2 = (insn & MASK_RS2) >> OP_SH_RS2;
-  return match_opcode (op, insn) && rs2 == 0;
-}
-
 const struct riscv_opcode riscv_opcodes[] =
 {
 /* name,      isa,   operands, match, mask, match_func, pinfo.  */
@@ -802,8 +795,8 @@ const struct riscv_opcode riscv_opcodes[] =
 
 {"vfence",    "V",   "", MATCH_VFENCE, MASK_VFENCE, match_opcode, 0},
 
-{"vtfr",      "V",   "s,Vf", MATCH_VTFR, MASK_VTFR | MASK_RS2, match_vtfr, INSN_ALIAS},
-{"vtfr",      "V",   "s,t,Vf", MATCH_VTFR, MASK_VTFR, match_opcode, 0},
+{"vtfr",      "V",   "s,Vf", MATCH_VTFR, MASK_VTFR | MASK_RS2, match_opcode, 0},
+{"vtfrx",     "V",   "s,t,Vf", MATCH_VTFRX, MASK_VTFRX, match_opcode, 0},
 {"vcfg",      "V",   "s,Vq", MATCH_VCFG, MASK_VCFG, match_opcode, 0},
 
 /* Terminate the list.  */
