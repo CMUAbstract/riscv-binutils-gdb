@@ -727,10 +727,16 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vsrl.v",      "V",   "Vd,Vs,Vt", MATCH_VSRL_V, MASK_VSRL_V, match_opcode, 0 },
 
 {"vpermute.v",  "V",   "Vd,Vs,Vt", MATCH_VPERMUTE_V, MASK_VPERMUTE_V, match_opcode, 0 },
+
 {"vpresum.v",   "V",   "Vd,Vs", MATCH_VPRESUM_V, MASK_VPRESUM_V | MASK_RS2, match_opcode, 0 },
+{"vpreor.v",    "V",   "Vd,Vs", MATCH_VPREOR_V, MASK_VPREOR_V | MASK_RS2, match_opcode, 0 },
+{"vpreand.v",   "V",   "Vd,Vs", MATCH_VPREAND_V, MASK_VPREAND_V | MASK_RS2, match_opcode, 0 },
+{"vprexor.v",   "V",   "Vd,Vs", MATCH_VPREXOR_V, MASK_VPREXOR_V | MASK_RS2, match_opcode, 0 },
+{"vpreprod.v",  "V",   "Vd,Vs", MATCH_VPREPROD_V, MASK_VPREPROD_V | MASK_RS2, match_opcode, 0 },
 
 {"vredsum.v",   "V",   "Vd,Vs", MATCH_VREDSUM_V, MASK_VREDSUM_V | MASK_RS2, match_opcode, 0 },
 {"vredor.v",    "V",   "Vd,Vs", MATCH_VREDOR_V, MASK_VREDOR_V | MASK_RS2, match_opcode, 0 },
+
 {"vmask.i",     "V",   "Vj", MATCH_VMASK_I, MASK_VMASK_I | MASK_RS1 | MASK_RD, match_opcode, 0 },
 
 {"vadd.x",      "V",   "Vd,Vs,t", MATCH_VADD_X, MASK_VADD_X, match_opcode, 0 },
