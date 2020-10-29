@@ -803,7 +803,7 @@ const struct riscv_opcode riscv_opcodes[] =
 
 {"vtfr",      "V",   "s,Vf", MATCH_VTFR, MASK_VTFR | MASK_RS2, match_opcode, 0},
 {"vtfrx",     "V",   "s,t,Vf", MATCH_VTFRX, MASK_VTFRX, match_opcode, 0},
-{"vcfg",      "V",   "s,Vq", MATCH_VCFG, MASK_VCFG, match_opcode, 0},
+{"vcfg",      "V",   "s,t", MATCH_VCFG, MASK_VCFG, match_opcode, 0},
 
 /* Terminate the list.  */
 {0, 0, 0, 0, 0, 0, 0}

@@ -584,7 +584,7 @@
 #define MATCH_VTFRX 0x400b
 #define MASK_VTFRX  0x707f
 #define MATCH_VCFG 0x100b
-#define MASK_VCFG  0x7fff
+#define MASK_VCFG  0xfe007fff
 #define MATCH_VADD_V 0x57
 #define MASK_VADD_V  0xfc00707f
 #define MATCH_VADD_X 0x1057

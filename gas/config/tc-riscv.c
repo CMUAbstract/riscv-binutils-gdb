@@ -1336,9 +1336,9 @@ static const char *riscv_ip(char *str, struct riscv_cl_insn *ip,
 								if(errno == EINVAL || errno == ERANGE) break;
 							}
 							if(imm > 0xfff) break;
-							INSERT_BITS((*ip).insn_opcode, ((imm >> 4) & 0x7f), 
+							INSERT_BITS((*ip).insn_opcode, ((imm >> 5) & 0x7f), 
 								OP_MASK_CUSTOM_IMM, OP_SH_CUSTOM_IMM);
-							INSERT_BITS((*ip).insn_opcode, (imm & 0xf), OP_MASK_RD, OP_SH_RD);
+							INSERT_BITS((*ip).insn_opcode, (imm & 0x1f), OP_MASK_RD, OP_SH_RD);
 						}
 						continue;
 					case 'q':
